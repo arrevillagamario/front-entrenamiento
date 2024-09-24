@@ -12,6 +12,7 @@ import Bienvenida from "./pages/Bienvenida.jsx";
 import RutinaDiaria from "./pages/RutinaDiaria.jsx";
 import Alimentacion from "./pages/Alimentacion.jsx";
 import Firstroutine from "./pages/Firstroutine.jsx";
+import Editar from "./components/Editar.jsx";
 import ProtectedRoute from "./components/ProtectedRoute"; // Importamos el componente de protección
 
 const router = createBrowserRouter([
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
       {
         path: "alimentacion",
         element: <Alimentacion />,
+      },
+      {
+        path: "editar",
+        element: <Editar />,
       },
     ],
   },
