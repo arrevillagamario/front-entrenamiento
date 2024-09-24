@@ -6,35 +6,36 @@ const Editar = () => {
     first_name: "",
     last_name: "",
     email: "",
-    weight: "", // Inicializamos como decimal
-    height: "", // Inicializamos como decimal
-    age: "", // Inicializamos como número entero
+    weight: "",
+    height: "",
+    age: "",
     goal: "",
   });
 
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
+  const userData = JSON.parse(localStorage.getItem("userData"));
+  const id = parseInt(userData.user_id);
+
   // Simulamos la obtención de los datos del usuario al cargar el componente
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/user/1"); // Cambia la URL por la correcta
+        const response = await axios.get(`http://localhost:3000/user/find/${id}`);
         setUser(response.data);
       } catch (error) {
         setError("Error al cargar los datos del usuario");
       }
     };
     fetchUserData();
-  }, []);
+  }, [id]);
 
   // Manejar los cambios en los campos del formulario
   const handleChange = (e) => {
     const { name, value } = e.target;
 
-    if (name === "weight" || name === "height") {
-      setUser({ ...user, [name]: parseFloat(value) }); // Permite solo editar el peso y la altura
-    }
+    setUser({ ...user, [name]: value });
   };
 
   // Enviar los datos actualizados a la API
@@ -42,9 +43,12 @@ const Editar = () => {
     e.preventDefault();
     try {
       console.log(user); // Mostrar los datos del usuario en la consola para depurar
-      const response = await axios.put(`http://localhost:3000/user/update/${user.id}`, {
+      const response = await axios.put(`http://localhost:3000/user/update`, {
+        user_id: id,
         weight: parseFloat(user.weight),
         height: parseFloat(user.height),
+        age: parseInt(user.age),
+        goal: user.goal,
       });
 
       if (response.status === 200) {
@@ -99,8 +103,9 @@ const Editar = () => {
               type="number"
               name="age"
               value={user.age}
-              className="w-full p-3 rounded-full bg-gray-700 text-white placeholder-gray-400"
-              disabled // No se puede editar
+              onChange={handleChange} // Permitir editar la edad
+              className="w-full p-3 rounded-full bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-500"
+              required
             />
             <input
               type="number"
@@ -122,9 +127,10 @@ const Editar = () => {
             />
             <select
               name="goal"
+              onChange={handleChange} // Permitir editar la meta (objetivo)
               value={user.goal}
               className="w-full p-3 rounded-full bg-gray-700 text-white"
-              disabled // No se puede editar
+              required
             >
               <option value="Perder peso">Perder peso</option>
               <option value="Ganar masa muscular">Ganar masa muscular</option>
