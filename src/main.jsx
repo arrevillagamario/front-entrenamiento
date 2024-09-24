@@ -12,6 +12,7 @@ import Bienvenida from "./pages/Bienvenida.jsx";
 import RutinaDiaria from "./pages/RutinaDiaria.jsx";
 import Alimentacion from "./pages/Alimentacion.jsx";
 import Firstroutine from "./pages/Firstroutine.jsx";
+import ProtectedRoute from "./components/ProtectedRoute"; // Importamos el componente de protección
 
 const router = createBrowserRouter([
   {
@@ -24,7 +25,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/home",
-    element: <Layout />,
+    element: (
+      <ProtectedRoute>
+        <Layout />
+      </ProtectedRoute>
+    ),
     children: [
       {
         path: "ejercicios",
@@ -42,11 +47,19 @@ const router = createBrowserRouter([
   },
   {
     path: "/rutinas/:musculo",
-    element: <Rutina />,
+    element: (
+      <ProtectedRoute>
+        <Rutina />
+      </ProtectedRoute>
+    ),
   },
   {
     path: "/home/rutina-general",
-    element: <Firstroutine />,
+    element: (
+      <ProtectedRoute>
+        <Firstroutine />
+      </ProtectedRoute>
+    ),
   },
   {
     path: "/bienvenida",

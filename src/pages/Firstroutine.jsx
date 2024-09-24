@@ -8,7 +8,7 @@ const RutinaGeneral = () => {
   const [ejercicios, setEjercicios] = useState([]);
   const [currentExerciseIndex, setCurrentExerciseIndex] = useState(0);
   const [error, setError] = useState(null);
-  const [showWelcome, setShowWelcome] = useState(true); 
+  const [showWelcome, setShowWelcome] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -28,10 +28,13 @@ const RutinaGeneral = () => {
           height: userData.height,
           age: userData.age,
           objetive: userData.goal,
-          user_id: userData.user_id
+          user_id: userData.user_id,
         };
 
-        const response = await axios.post("http://localhost:3000/routine/first-routine", newUserData);
+        const response = await axios.post(
+          "http://localhost:3000/routine/first-routine",
+          newUserData
+        );
 
         if (response.data && response.data.routine_json) {
           setMensaje(response.data.routine_json.mensaje);
@@ -57,18 +60,20 @@ const RutinaGeneral = () => {
     if (currentExerciseIndex < ejercicios.length - 1) {
       setCurrentExerciseIndex(currentExerciseIndex + 1);
     } else {
-      navigate("/home");
+      navigate("/home/ejercicios");
     }
   };
 
   const handleGoHome = () => {
-    navigate("/home");
+    navigate("/home/ejercicios");
   };
 
   if (loading) {
     return (
       <div className="flex justify-center items-center h-screen bg-gray-900 text-white">
-        <h2 className="text-2xl">Generando la rutina perfecta en base a tus datos...</h2>
+        <h2 className="text-2xl">
+          Generando la rutina perfecta en base a tus datos...
+        </h2>
       </div>
     );
   }
@@ -86,11 +91,16 @@ const RutinaGeneral = () => {
     return (
       <div className="flex justify-center items-center h-screen bg-gray-900 text-white">
         <div className="w-full max-w-lg p-6 bg-gray-800 rounded-lg shadow-lg text-center">
-          <h2 className="text-2xl font-bold mb-4">Hola, {JSON.parse(localStorage.getItem("userData")).first_name}.</h2>
+          <h2 className="text-2xl font-bold mb-4">
+            Hola, {JSON.parse(localStorage.getItem("userData")).first_name}.
+          </h2>
           <p className="text-lg">
-            ¡Enhorabuena por embarcarte en este nuevo camino! En base a tus datos (peso: {JSON.parse(localStorage.getItem("userData")).weight} kg;
-            altura: {JSON.parse(localStorage.getItem("userData")).height} m; edad: {JSON.parse(localStorage.getItem("userData")).age} años),
-            aquí tienes una rutina de {ejercicios.length} ejercicios para ayudarte a {JSON.parse(localStorage.getItem("userData")).goal}.
+            ¡Enhorabuena por embarcarte en este nuevo camino! En base a tus
+            datos (peso: {JSON.parse(localStorage.getItem("userData")).weight}{" "}
+            kg; altura: {JSON.parse(localStorage.getItem("userData")).height} m;
+            edad: {JSON.parse(localStorage.getItem("userData")).age} años), aquí
+            tienes una rutina de {ejercicios.length} ejercicios para ayudarte a{" "}
+            {JSON.parse(localStorage.getItem("userData")).goal}.
           </p>
           <button
             onClick={handleStart}
@@ -109,9 +119,15 @@ const RutinaGeneral = () => {
       <div className="w-full max-w-lg p-6 bg-gray-800 rounded-lg shadow-lg">
         {currentExerciseIndex < ejercicios.length ? (
           <div className="space-y-6">
-            <h2 className="text-2xl font-bold text-center">{ejercicios[currentExerciseIndex].nombre}</h2>
-            <p className="text-sm">{ejercicios[currentExerciseIndex].descripcion}</p>
-            <p className="text-sm font-semibold">{ejercicios[currentExerciseIndex].tiempo}</p>
+            <h2 className="text-2xl font-bold text-center">
+              {ejercicios[currentExerciseIndex].nombre}
+            </h2>
+            <p className="text-sm">
+              {ejercicios[currentExerciseIndex].descripcion}
+            </p>
+            <p className="text-sm font-semibold">
+              {ejercicios[currentExerciseIndex].tiempo}
+            </p>
 
             <button
               onClick={handleNextExercise}
@@ -122,7 +138,9 @@ const RutinaGeneral = () => {
           </div>
         ) : (
           <div className="text-center space-y-6">
-            <h2 className="text-2xl font-bold">¡Genial, bien hecho, sigue así!</h2>
+            <h2 className="text-2xl font-bold">
+              ¡Genial, bien hecho, sigue así!
+            </h2>
             <button
               onClick={handleGoHome}
               className="w-full bg-blue-500 text-white font-bold py-2 rounded-lg hover:bg-blue-600 transition duration-300"
