@@ -14,6 +14,7 @@ import Alimentacion from "./pages/Alimentacion.jsx";
 import Firstroutine from "./pages/Firstroutine.jsx";
 import Editar from "./components/Editar.jsx";
 import ProtectedRoute from "./components/ProtectedRoute"; // Importamos el componente de protección
+import Dailyroutine from "./pages/Dailyroutine.jsx";
 
 const router = createBrowserRouter([
   {
@@ -48,6 +49,11 @@ const router = createBrowserRouter([
         path: "editar",
         element: <Editar />,
       },
+      {
+        path: "rutina-ge",
+        element: <Dailyroutine />,
+
+      }
     ],
   },
   {
