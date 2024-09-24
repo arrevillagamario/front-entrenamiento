@@ -11,6 +11,7 @@ import Rutina from "./pages/Rutina.jsx";
 import Bienvenida from "./pages/Bienvenida.jsx";
 import RutinaDiaria from "./pages/RutinaDiaria.jsx";
 import Alimentacion from "./pages/Alimentacion.jsx";
+import Firstroutine from "./pages/Firstroutine.jsx";
 
 const router = createBrowserRouter([
   {
@@ -44,7 +45,11 @@ const router = createBrowserRouter([
     element: <Rutina />,
   },
   {
-    path: "/Bienvenida",
+    path: "/home/rutina-general",
+    element: <Firstroutine />,
+  },
+  {
+    path: "/bienvenida",
     element: <Bienvenida />,
   },
 ]);
