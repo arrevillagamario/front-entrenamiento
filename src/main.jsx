@@ -8,6 +8,7 @@ import Layout from "./components/Layout.jsx";
 import Registrar from "./pages/Registrar.jsx";
 import Inicio from "./pages/Inicio.jsx";
 import Rutina from "./pages/Rutina.jsx";
+import Editar from "./components/Editar.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
   {
     path: "/rutinas/:musculo",
     element: <Rutina />,
+  },
+  {
+    path: "/editar",
+    element: <Editar />,
   },
 ]);
 
