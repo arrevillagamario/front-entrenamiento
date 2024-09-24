@@ -32,7 +32,7 @@ const Login = () => {
       if (response.status === 200) {
         setSuccessMessage("Login successful!");
         setErrorMessage("");
-        navigate("/home/ejercicios");
+        navigate("/home/rutina-diaria");
       }
     } catch (error) {
       if (error.response && error.response.data.error) {
