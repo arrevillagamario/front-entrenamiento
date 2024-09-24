@@ -1,7 +1,6 @@
 import { useState } from 'react';
-import FrontBody from '../components/FrontBody';  // Asegúrate de que las rutas sean correctas
-import BackBody from '../components/BackBody';    // Asegúrate de que las rutas sean correctas
-
+import FrontBody from '../components/FrontBody'
+import BackBody from '../components/BackBody'
 const Inicio = () => {
   const [view, setView] = useState('front'); // Define el estado inicial como 'front'
 

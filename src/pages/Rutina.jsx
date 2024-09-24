@@ -4,6 +4,7 @@ import axios from "axios";
 
 const Ejercicios = () => {
     const { musculo } = useParams();
+    console.log(musculo);
   const [ejercicios, setEjercicios] = useState([]);
   const [currentExerciseIndex, setCurrentExerciseIndex] = useState(0);
   const [loading, setLoading] = useState(true);
@@ -12,7 +13,7 @@ const Ejercicios = () => {
   useEffect(() => {
     const fetchEjercicios = async () => {
       try {
-        const response = await axios.get('https://t33k1rl4-3001.use.devtunnels.ms/gemini/generate-routine/${musculo}'); 
+        const response = await axios.get(`http://localhost:3000/gemini/generate-routine/${musculo}`); 
         setEjercicios(response.data.ejercicios);
         setLoading(false); 
       } catch (error) {

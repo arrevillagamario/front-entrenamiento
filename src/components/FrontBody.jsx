@@ -1,6 +1,6 @@
 import React from 'react';
 
-const BackBody = () => {
+const FrontBody = () => {
   return (
     <div>
       <img src="../public/img/1.png" usemap="#image-map"/>
@@ -25,4 +25,4 @@ const BackBody = () => {
   );
 };
 
-export default BackBody;
+export default FrontBody;
