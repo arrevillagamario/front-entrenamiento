@@ -50,7 +50,7 @@ const Layout = () => {
                 Alimentación
               </Link>
               <Link
-                to={"/"}
+                to={"/home/rutina-diaria"}
                 className="text-white hover:text-green-500 transition duration-300"
               >
                 Rutina diaria
