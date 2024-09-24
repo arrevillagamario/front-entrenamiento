@@ -1,3 +1,4 @@
+import { Outlet } from "react-router-dom";
 const Inicio = () => {
   return (
     <div>
@@ -8,7 +9,7 @@ const Inicio = () => {
           target=""
           alt="hombro L"
           title="hombro L"
-          href=""
+          href="/rutinas/hombro"
           coords="251,106,240,109,233,113,224,120,218,129,217,136,216,144,221,147,229,150,238,150,244,137,250,126,256,119,267,110"
           shape="poly"
         />
@@ -109,6 +110,7 @@ const Inicio = () => {
           shape="poly"
         />
       </map>
+      <Outlet />
     </div>
   );
 };

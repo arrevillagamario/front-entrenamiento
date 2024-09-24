@@ -8,9 +8,9 @@ const Registrar = () => {
     last_name: "",
     email: "",
     password: "",
-    weight: 0.0, // Inicializamos como decimal
-    height: 0.0, // Inicializamos como decimal
-    age: 0, // Inicializamos como número entero
+    weight: "", // Inicializamos como decimal
+    height: "", // Inicializamos como decimal
+    age: "", // Inicializamos como número entero
     goal: "",
   });
 
@@ -143,7 +143,7 @@ const Registrar = () => {
             <input
               type="number"
               name="height"
-              placeholder="Altura (cm)"
+              placeholder="Altura (mt Ej: 1.80)"
               onChange={handleChange}
               value={user.height}
               className="w-full p-3 rounded-full bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-500"

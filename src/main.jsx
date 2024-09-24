@@ -7,7 +7,7 @@ import Login from "./pages/Login.jsx";
 import Layout from "./components/Layout.jsx";
 import Registrar from "./pages/Registrar.jsx";
 import Inicio from "./pages/Inicio.jsx";
-
+import Rutina from "./pages/Rutina.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -22,10 +22,14 @@ const router = createBrowserRouter([
     element: <Layout />,
     children: [
       {
-        path: "/home/ejercicios",
+        path: "ejercicios",
         element: <Inicio />,
       },
     ],
+  },
+  {
+    path: "/rutinas/:musculo",
+    element: <Rutina />,
   },
 ]);
 
