@@ -59,12 +59,12 @@ const Layout = () => {
 
             <div className="hidden md:flex space-x-6 items-center">
               {/* Botón de perfil */}
-              <a
-                href="#"
+              <Link
+                to={"/home/editar"}
                 className="text-white font-bold py-2 px-4 rounded-full hover:bg-green-600 transition duration-300"
               >
                 Perfil
-              </a>
+              </Link>
               {/* Botón de logout con modal */}
               <button
                 onClick={handleLogoutClick}
@@ -119,7 +119,9 @@ const Layout = () => {
 
       {/* Modal de confirmación */}
       {showModal && (
-        <div className="fixed inset-0 bg-gray-900 bg-opacity-75 flex justify-center items-center">
+        <div
+          className="fixed inset-0 bg-gray-900 bg-opacity-75 flex justify-center items-center z-50" // Asegura que el z-index sea lo suficientemente alto
+        >
           <div className="bg-white p-6 rounded-lg shadow-lg text-center">
             <h2 className="text-2xl font-bold mb-4">¿Estás seguro?</h2>
             <p className="text-gray-700 mb-4">
