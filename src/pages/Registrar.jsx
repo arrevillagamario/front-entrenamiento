@@ -50,9 +50,13 @@ const Registrar = () => {
       if (response.status === 201) {
         setSuccess("Usuario registrado exitosamente");
         setError("");
+
+        // Guardar la respuesta en localStorage
+        localStorage.setItem("user", JSON.stringify(response.data));
+
         setTimeout(() => {
-          navigate("/");
-        }, 2000); // Redirige a la página principal después de 2 segundos
+          navigate("/"); // Redirige a la página principal después de 2 segundos
+        }, 2000);
       }
     } catch (error) {
       if (error.response && error.response.status === 400) {

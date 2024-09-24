@@ -8,6 +8,10 @@ import Layout from "./components/Layout.jsx";
 import Registrar from "./pages/Registrar.jsx";
 import Inicio from "./pages/Inicio.jsx";
 import Rutina from "./pages/Rutina.jsx";
+import Bienvenida from "./pages/Bienvenida.jsx";
+import RutinaDiaria from "./pages/RutinaDiaria.jsx";
+import Alimentacion from "./pages/Alimentacion.jsx";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -25,11 +29,23 @@ const router = createBrowserRouter([
         path: "ejercicios",
         element: <Inicio />,
       },
+      {
+        path: "rutina-diaria",
+        element: <RutinaDiaria />,
+      },
+      {
+        path: "alimentacion",
+        element: <Alimentacion />,
+      },
     ],
   },
   {
     path: "/rutinas/:musculo",
     element: <Rutina />,
+  },
+  {
+    path: "/Bienvenida",
+    element: <Bienvenida />,
   },
 ]);
 
